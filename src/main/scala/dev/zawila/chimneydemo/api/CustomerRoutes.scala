@@ -11,7 +11,7 @@ class CustomerRoutes[F[_]: Sync](customerService: CustomerService[F]) extends Ht
 
   val getCustomer: PartialFunction[Request[F], F[Response[F]]] = {
     case GET -> Root / "customers"  =>
-      customerService.getCustomers().flatMap(c => Ok(Customers(c)))
+      customerService.getCustomers().flatMap(c => Ok(Customers(c.map(CustomerApi.from))))
   }
 
   val createCustomer: PartialFunction[Request[F], F[Response[F]]] = {

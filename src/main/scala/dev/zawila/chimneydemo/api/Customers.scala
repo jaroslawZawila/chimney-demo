@@ -6,8 +6,14 @@ import io.circe.generic.auto._
 import org.http4s.circe.{jsonEncoderOf, jsonOf}
 import org.http4s.{EntityDecoder, EntityEncoder}
 
+case class Customers(customers: List[CustomerApi])
 
-case class Customers(customers: List[Customer])
+case class CustomerApi(name: String)
+
+object CustomerApi{
+  def from(customer: Customer) = CustomerApi(customer.name)
+}
+
 
 object Customers {
   implicit def encoder[F[_]: Sync]: EntityEncoder[F, Customers] = jsonEncoderOf[F, Customers]
