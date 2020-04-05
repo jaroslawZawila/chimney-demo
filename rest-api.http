@@ -1,0 +1,14 @@
+POST http://localhost:8021/customer
+Content-Type: application/json
+
+{"name":  "jarek"}
+
+<> 2020-04-05T032158.404.txt
+
+###
+GET http://localhost:8021/customers
+Accept: */*
+Cache-Control: no-cache
+
+###
+
