@@ -3,7 +3,8 @@ Content-Type: application/json
 
 {
   "name": "jarek",
-  "secretFiled": "Secret"
+  "secretFiled": "Secret",
+  "dob": "1985-02-14"
 }
 
 <> 2020-04-05T032158.404.txt

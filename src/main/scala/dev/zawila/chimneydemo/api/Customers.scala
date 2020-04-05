@@ -8,10 +8,10 @@ import org.http4s.{EntityDecoder, EntityEncoder}
 
 case class Customers(customers: List[CustomerApi])
 
-case class CustomerApi(name: String)
+case class CustomerApi(name: String, age: Int)
 
 object CustomerApi{
-  def from(customer: Customer) = CustomerApi(customer.name)
+  def from(customer: Customer) = CustomerApi(customer.name, customer.age)
 }
 
 
