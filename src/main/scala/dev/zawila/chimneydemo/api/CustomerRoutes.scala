@@ -6,12 +6,13 @@ import dev.zawila.chimneydemo.model.Customer
 import dev.zawila.chimneydemo.service.CustomerService
 import org.http4s.dsl.Http4sDsl
 import org.http4s.{Request, Response}
+import io.scalaland.chimney.dsl._
 
 class CustomerRoutes[F[_]: Sync](customerService: CustomerService[F]) extends Http4sDsl[F] {
 
   val getCustomer: PartialFunction[Request[F], F[Response[F]]] = {
     case GET -> Root / "customers"  =>
-      customerService.getCustomers().flatMap(c => Ok(Customers(c.map(CustomerApi.from))))
+      customerService.getCustomers().flatMap(c => Ok(Customers(c.map(_.into[CustomerApi].enableMethodAccessors.transform))))
   }
 
   val createCustomer: PartialFunction[Request[F], F[Response[F]]] = {
