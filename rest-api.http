@@ -1,7 +1,10 @@
 POST http://localhost:8021/customer
 Content-Type: application/json
 
-{"name":  "jarek"}
+{
+  "name": "jarek",
+  "secretFiled": "Secret"
+}
 
 <> 2020-04-05T032158.404.txt
 

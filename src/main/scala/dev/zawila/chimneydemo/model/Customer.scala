@@ -5,7 +5,7 @@ import org.http4s.{EntityDecoder, EntityEncoder}
 import org.http4s.circe._
 import io.circe.generic.auto._
 
-case class Customer(name: String)
+case class Customer(name: String, secretFiled: String)
 
 object Customer{
   implicit def encoder[F[_]: Sync]: EntityEncoder[F, Customer] = jsonEncoderOf[F, Customer]
