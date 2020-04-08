@@ -28,7 +28,7 @@ class CustomerRoutes[F[_]: Sync](customerService: CustomerService[F]) extends Ht
     case req @ POST -> Root / "update" / name =>
       for {
         request <- req.as[UpdateRequest]
-        newCustomer <- customerService.changeName(name, request.name)
+        newCustomer <- customerService.changeName(name, request)
         respo <- Ok(newCustomer.into[CustomerApi].enableMethodAccessors.transform)
       } yield respo
   }
