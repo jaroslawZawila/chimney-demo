@@ -16,3 +16,11 @@ Cache-Control: no-cache
 
 ###
 
+POST http://localhost:8021/update/jarek
+Content-Type: application/json
+
+{
+  "name": "Daniel"
+}
+
+###

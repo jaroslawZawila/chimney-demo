@@ -24,5 +24,14 @@ class CustomerRoutes[F[_]: Sync](customerService: CustomerService[F]) extends Ht
       } yield resp
   }
 
+  val updateCustomerName: PartialFunction[Request[F], F[Response[F]]] = {
+    case req @ POST -> Root / "update" / name =>
+      for {
+        request <- req.as[UpdateRequest]
+        newCustomer <- customerService.changeName(name, request.name)
+        respo <- Ok(newCustomer.into[CustomerApi].enableMethodAccessors.transform)
+      } yield respo
+  }
+
 
 }

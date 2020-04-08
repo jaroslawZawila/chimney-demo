@@ -11,6 +11,8 @@ class HttpRoute[F[_] : Sync](customerService: CustomerService[F]) {
   val routes: HttpRoutes[F] = HttpRoutes.of({
     customerRoutes.createCustomer.orElse(
       customerRoutes.getCustomer
+    ).orElse(
+      customerRoutes.updateCustomerName
     )
   })
 }
